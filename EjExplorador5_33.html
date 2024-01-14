@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Mostrar frase introducida caracter a caracter</title>
+    </head>
+    <body>
+        <h1>Mostrar frase introducida caracter a caracter</h1>
+
+        <div id="resultado" style="color:red;font-size:1.6em"></div>
+
+        <script>
+            var input = prompt('Introduce la frase Sr. usuario');
+            var texto_limpio = '';
+
+            for (i=0;i<=input.length;i++) {
+                if (isNaN(input.charAt(i))) {
+                    texto_limpio += input.charAt(i) + '<br />';
+                }
+            }
+
+            document.getElementById('resultado').innerHTML = texto_limpio;
+            //alert(texto_limpio);
+        </script>
+    </body>
+</html>
