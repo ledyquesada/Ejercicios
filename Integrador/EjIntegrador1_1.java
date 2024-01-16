@@ -1,3 +1,7 @@
+/**
+ * Principios de POO
+ */
+
 class Persona {
     String nombre;
     int edad;
