@@ -1,67 +1,75 @@
 //
 // Arbol binario de busqueda (ABB)
 //
-// Implementación del Nodo de un Árbol Binario
-class NodoABB {
-    int valor;
-    NodoABB izquierdo, derecho;
 
-    public NodoABB(int valor) {
+
+// Implementación de un Nodo para el Árbol Binario de Búsqueda (ABB)
+class Nodo {
+    int valor;
+    Nodo izquierda, derecha;
+
+    public Nodo(int valor) {
         this.valor = valor;
-        izquierdo = derecho = null;
+        this.izquierda = this.derecha = null;
     }
 }
 
-// Implementación del Árbol Binario de Búsqueda
-class ArbolBinarioBusqueda {
-    NodoABB raiz;
+// Implementación del Árbol Binario de Búsqueda (ABB)
+public class ArbolBinarioBusqueda {
+    private Nodo raiz;
 
     public ArbolBinarioBusqueda() {
-        raiz = null;
+        this.raiz = null;
     }
 
-    // Método para insertar un valor en el ABB
-    public void insertar(int valor) {
-        raiz = insertarRec(raiz, valor);
-    }
-
-    private NodoABB insertarRec(NodoABB nodo, int valor) {
+    // Método para insertar un valor en el árbol
+    private Nodo insertar(Nodo nodo, int valor) {
         if (nodo == null) {
-            return new NodoABB(valor);
+            return new Nodo(valor);
         }
 
         if (valor < nodo.valor) {
-            nodo.izquierdo = insertarRec(nodo.izquierdo, valor);
+            nodo.izquierda = insertar(nodo.izquierda, valor);
         } else if (valor > nodo.valor) {
-            nodo.derecho = insertarRec(nodo.derecho, valor);
+            nodo.derecha = insertar(nodo.derecha, valor);
         }
 
         return nodo;
     }
 
-    // Método para recorrer el árbol en orden (in-order)
-    public void imprimirInOrden() {
-        imprimirInOrdenRec(raiz);
-        System.out.println();
+    // Método público para insertar un valor en el árbol
+    public void insertar(int valor) {
+        raiz = insertar(raiz, valor);
     }
 
-    private void imprimirInOrdenRec(NodoABB nodo) {
+    // Método para realizar un recorrido en orden (in-order) del árbol
+    private void recorridoInOrden(Nodo nodo) {
         if (nodo != null) {
-            imprimirInOrdenRec(nodo.izquierdo);
+            recorridoInOrden(nodo.izquierda);
             System.out.print(nodo.valor + " ");
-            imprimirInOrdenRec(nodo.derecho);
+            recorridoInOrden(nodo.derecha);
         }
+    }
+
+    // Método público para realizar un recorrido en orden del árbol
+    public void recorridoInOrden() {
+        recorridoInOrden(raiz);
     }
 
     public static void main(String[] args) {
         ArbolBinarioBusqueda abb = new ArbolBinarioBusqueda();
-        int[] numeros = {50, 30, 70, 20, 40, 60, 80};
 
-        for (int numero : numeros) {
-            abb.insertar(numero);
-        }
+        // Insertar valores en el árbol
+        abb.insertar(50);
+        abb.insertar(30);
+        abb.insertar(70);
+        abb.insertar(20);
+        abb.insertar(40);
+        abb.insertar(60);
+        abb.insertar(80);
 
-        System.out.println("Árbol Binario de Búsqueda (In-Orden):");
-        abb.imprimirInOrden();
+        // Realizar un recorrido en orden para verificar la construcción del árbol
+        System.out.println("Recorrido en orden del Árbol Binario de Búsqueda:");
+        abb.recorridoInOrden();
     }
 }
