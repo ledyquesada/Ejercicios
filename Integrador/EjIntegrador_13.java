@@ -1,52 +1,49 @@
 /**
 *
-* Calcular impuesto
+* Serializacion
 */
 
-abstract class Vehiculo {
-    private String marca;
-    private String modelo;
+import java.io.*;
 
-    Vehiculo(String marca, String modelo) {
-        this.marca = marca;
-        this.modelo = modelo;
-    }
+class Empleado implements Serializable {
+    private String nombre;
+    private int edad;
+    private double salario;
 
-    abstract double calcularImpuesto();
-}
-
-class Coche extends Vehiculo {
-    Coche(String marca, String modelo) {
-        super(marca, modelo);
+    Empleado(String nombre, int edad, double salario) {
+        this.nombre = nombre;
+        this.edad = edad;
+        this.salario = salario;
     }
 
     @Override
-    double calcularImpuesto() {
-        return 100.0;  // Impuesto fijo para carros
-    }
-}
-
-class Camion extends Vehiculo {
-    Camion(String marca, String modelo) {
-        super(marca, modelo);
-    }
-
-    @Override
-    double calcularImpuesto() {
-        return 200.0;  // Impuesto fijo para camiones
+    public String toString() {
+        return "Empleado{" +
+                "nombre='" + nombre + '\'' +
+                ", edad=" + edad +
+                ", salario=" + salario +
+                '}';
     }
 }
 
 public class Main {
     public static void main(String[] args) {
-        Vehiculo coche = new Coche("Toyota", "Corolla");
-        Vehiculo camion = new Camion("Volvo", "VNL");
+        Empleado empleado = new Empleado("Juan", 30, 50000.0);
 
-        List<Vehiculo> vehiculos = Arrays.asList(coche, camion);
+        // Serialización
+        try (ObjectOutputStream salida = new ObjectOutputStream(new FileOutputStream("empleado.ser"))) {
+            salida.writeObject(empleado);
+            System.out.println("Empleado serializado correctamente.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-        for (Vehiculo vehiculo : vehiculos) {
-            System.out.println("Impuesto para " + vehiculo.getMarca() + " " + vehiculo.getModelo() +
-                    ": " + vehiculo.calcularImpuesto());
+        // Deserialización
+        try (ObjectInputStream entrada = new ObjectInputStream(new FileInputStream("empleado.ser"))) {
+            Empleado empleadoDeserializado = (Empleado) entrada.readObject();
+            System.out.println("Empleado deserializado: " + empleadoDeserializado);
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
         }
     }
 }
