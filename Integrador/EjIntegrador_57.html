@@ -1,0 +1,23 @@
+
+<!-- Interactividad-->
+
+
+<!-- Al final del archivo HTML, antes de cerrar el body -->
+<script src="main.js"></script>
+
+// En el archivo main.js
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contact-form');
+
+    form.addEventListener('submit', function(event) {
+        if (!validateForm()) {
+            event.preventDefault();
+            alert('Completa todos los campos antes de enviar el formulario.');
+        }
+    });
+
+    function validateForm() {
+        // Agrega lógica de validación según tus necesidades
+        return true;
+    }
+});
