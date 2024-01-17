@@ -1,0 +1,40 @@
+
+<!-- Destacados -->
+
+
+<!-- Dentro del cuerpo de la página, después de la galería -->
+<section id="conexiones">
+    <h2>Proyectos de Conexiones Ferroviarias</h2>
+    <div class="railway-projects">
+        <div class="project-card">
+            <img src="proyecto1.jpg" alt="Proyecto Ferroviario 1">
+            <h3>Mejora de Vías</h3>
+            <p>Modernización y expansión de vías ferroviarias para mejorar la conectividad.</p>
+        </div>
+        <div class="project-card">
+            <img src="proyecto2.jpg" alt="Proyecto Ferroviario 2">
+            <h3>Trenes Ecológicos</h3>
+            <p>Introducción de trenes impulsados por energías renovables para reducir impacto ambiental.</p>
+        </div>
+        <!-- Agrega más tarjetas según sea necesario -->
+    </div>
+</section>
+
+/* En el archivo styles.css */
+.railway-projects {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.project-card {
+    width: 30%;
+    margin: 1em;
+    padding: 1em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.project-card img {
+    width: 100%;
+    height: auto;
+}
