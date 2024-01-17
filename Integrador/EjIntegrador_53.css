@@ -1,0 +1,34 @@
+
+/* Diseño responsivo */
+
+
+/* En el archivo styles.css */
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+header {
+    background-color: #3498db;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    background-color: #2980b9;
+    padding: 0.5em;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Media query para dispositivos móviles */
+@media only screen and (max-width: 600px) {
+    nav {
+        flex-direction: column;
+    }
+}
