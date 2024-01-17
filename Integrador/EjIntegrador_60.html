@@ -1,0 +1,57 @@
+
+<!-- Filtro avanzado -->
+
+
+<!-- En la sección de Deforestación, dentro de la div deforestation-stats -->
+<div id="advanced-filter">
+    <label for="geographic-area">Área Geográfica:</label>
+    <select id="geographic-area">
+        <option value="all">Todas las Áreas</option>
+        <option value="north">Región Norte</option>
+        <option value="south">Región Sur</option>
+        <!-- Agrega más opciones según sea necesario -->
+    </select>
+    <!-- Otros controles de filtro (pueden ser inputs de fecha, por ejemplo) -->
+
+    <!-- Contenedor para mostrar resultados filtrados -->
+    <div id="filtered-results"></div>
+</div>
+
+
+// En el archivo main.js
+document.addEventListener('DOMContentLoaded', function() {
+    const geographicAreaSelect = document.getElementById('geographic-area');
+    const filteredResultsContainer = document.getElementById('filtered-results');
+
+    // Agrega eventos para detectar cambios en los controles de filtro
+    geographicAreaSelect.addEventListener('change', applyFilters);
+
+    function applyFilters() {
+        // Implementa lógica de filtrado según las opciones seleccionadas
+        const selectedGeographicArea = geographicAreaSelect.value;
+
+        // Simula la obtención de resultados filtrados (puedes obtenerlos de una API)
+        const filteredResults = getFilteredResults(selectedGeographicArea);
+
+        // Muestra los resultados en el contenedor
+        displayFilteredResults(filteredResults);
+    }
+
+    function getFilteredResults(geographicArea) {
+        // Implementa la lógica real de filtrado (puede ser una llamada a una API)
+        // Aquí devolvemos datos simulados para propósitos ilustrativos
+        return [
+            { location: 'Área A', amount: 50 },
+            { location: 'Área B', amount: 30 },
+            // ...
+        ];
+    }
+
+    function displayFilteredResults(results) {
+        // Muestra los resultados en el contenedor
+        filteredResultsContainer.innerHTML = `<h3>Resultados Filtrados</h3>`;
+        results.forEach(area => {
+            filteredResultsContainer.innerHTML += `<p>${area.location}: ${area.amount} acres</p>`;
+        });
+    }
+});
