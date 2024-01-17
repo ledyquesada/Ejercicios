@@ -1,0 +1,27 @@
+
+<!-- Datos dinamicos -->
+
+
+<!-- En la sección de Deforestación, dentro de la div deforestation-stats -->
+<div id="dynamic-data"></div>
+
+// En el archivo main.js
+document.addEventListener('DOMContentLoaded', function() {
+    const dynamicDataContainer = document.getElementById('dynamic-data');
+
+    // Utiliza una API para obtener datos en tiempo real (por ejemplo, fetch())
+    fetch('https://api.deforestationdata.com/')
+        .then(response => response.json())
+        .then(data => {
+            // Procesa y muestra los datos dinámicos en la página
+            dynamicDataContainer.innerHTML = `<h3>Áreas Deforestadas en Tiempo Real</h3>`;
+            data.forEach(area => {
+                dynamicDataContainer.innerHTML += `<p>${area.location}: ${area.amount} acres</p>`;
+            });
+        })
+        .catch(error => {
+            console.error('Error al obtener datos dinámicos:', error);
+            dynamicDataContainer.innerHTML = '<p>Error al cargar datos dinámicos.</p>';
+        });
+});
+
