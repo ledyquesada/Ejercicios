@@ -1,0 +1,19 @@
+
+<!-- Mapa interactivo -->
+
+
+
+<!-- En la sección de Deforestación, dentro de la div deforestation-stats -->
+<div id="map"></div>
+
+// En el archivo main.js
+document.addEventListener('DOMContentLoaded', function() {
+    // Configuración básica de Leaflet
+    const map = L.map('map').setView([latitud, longitud], 10);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Agrega marcadores u otras capas según tus datos
+});
