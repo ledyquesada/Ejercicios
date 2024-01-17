@@ -1,0 +1,26 @@
+<!-- Dentro de la sección de Presentación -->
+<section id="galeria">
+    <h2>Galería de Proyectos</h2>
+    <div class="image-gallery">
+        <img src="imagen1.jpg" alt="Proyecto Ferroviario 1">
+        <img src="imagen2.jpg" alt="Proyecto Ferroviario 2">
+        <img src="imagen3.jpg" alt="Impacto de la Deforestación">
+    </div>
+</section>
+
+/* En el archivo styles.css */
+.image-gallery {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.image-gallery img {
+    width: 30%;
+    margin: 0.5em;
+    transition: transform 0.3s ease-in-out;
+}
+
+.image-gallery img:hover {
+    transform: scale(1.1);
+}
